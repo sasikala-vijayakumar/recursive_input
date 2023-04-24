@@ -3,11 +3,11 @@ import "./recursive_input.css";
 
 interface Props {
   parentCount: number;
-  onDelete: (childCount: number) => void;
+  //   onDelete: (childCount: number) => void;
 }
 export default function RecursiveInput(props: Props) {
   const { parentCount } = props;
-  const [text, setText] = useState("");
+  const [value, setValue] = useState("");
   const [children, setChildren] = useState<JSX.Element[]>([]);
 
   const addChild = () => {
@@ -15,12 +15,12 @@ export default function RecursiveInput(props: Props) {
     const newChild = (
       <RecursiveInput
         key={childCount}
-        parentCount={parentCount + text.length}
-        onDelete={() => removeChild(childCount)}
-        />
-        );
-        setChildren([...children, newChild]);
-        console.log(children);
+        parentCount={parentCount + value.length}
+        // onDelete={() => removeChild(childCount)}
+      />
+    );
+    setChildren([...children, newChild]);
+    // console.log(children);
   };
 
   const removeChild = (childCount: number) => {
@@ -28,13 +28,28 @@ export default function RecursiveInput(props: Props) {
   };
 
   return (
-    <div>
+    <div className="child--input">
       <h2>Characters in children: {parentCount}</h2>
-      <input value={text} onChange={(e) => setText(e.target.value)} />
-      <button onClick={addChild}>Add child</button>
-      <button onClick={() => removeChild}>Delete element</button>
+      <input value={value} onChange={(e) => setValue(e.target.value)} placeholder="Enter some text" />
+      <div className="input--button--div">
+        <button className="add" id="input--button" onClick={addChild}>
+          Add child
+        </button>
+        <button
+          className="delete"
+          id="input--button"
+          onClick={() => removeChild}
+        >
+          Delete element
+        </button>
+      </div>
       {children.map((child) => (
-        <div key={child.key}>{child}</div>
+        <div
+          id={`${children.length % 2 === 0 ? "grey" : "white"}`}
+          key={child.key}
+        >
+          {child}
+        </div>
       ))}
     </div>
   );

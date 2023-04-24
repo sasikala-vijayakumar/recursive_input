@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import RecursiveInput from "./recursive_input";
-interface Props {
-  removeChild: (childCount: number) => void;
-}
-export default function ParentInput(props: Props) {
-  const { removeChild } = props;
+
+export default function ParentInput() {
+//   const { removeChild } = props;
   const [value, setValue] = useState("");
   const [active, setActive] = useState(false);
 
@@ -29,7 +27,7 @@ export default function ParentInput(props: Props) {
           {active && (
             <RecursiveInput
               parentCount={0}
-              onDelete={(childCount: number) => removeChild(childCount)}
+            //   onDelete={(childCount: number) => removeChild(childCount)}
             />
           )}
         </div>
