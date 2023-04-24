@@ -5,7 +5,7 @@ interface Props {
   parentCount: number;
   onDelete: (childCount: number) => void;
 }
-export default function RecursiveComponent(props: Props) {
+export default function RecursiveInput(props: Props) {
   const { parentCount } = props;
   const [text, setText] = useState("");
   const [children, setChildren] = useState<JSX.Element[]>([]);
@@ -13,7 +13,7 @@ export default function RecursiveComponent(props: Props) {
   const addChild = () => {
     const childCount = children.length + 1;
     const newChild = (
-      <RecursiveComponent
+      <RecursiveInput
         key={childCount}
         parentCount={parentCount + text.length}
         onDelete={() => removeChild(childCount)}
