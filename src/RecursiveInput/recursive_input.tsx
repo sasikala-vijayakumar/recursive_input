@@ -10,11 +10,11 @@ type RecursiveInputProps = {
   level: number;
   parentId: number | null;
   onDelete?: (id: number) => void;
-  Length?: (num: number) => void;
+  onKeyPress?: (num: number) => void;
 };
 
 export default function RecursiveInput(props: RecursiveInputProps) {
-  const { level, parentId, onDelete, Length } = props;
+  const { level, parentId, onDelete, onKeyPress } = props;
   const [text, setText] = useState<string[]>([]);
   const [children, setChildren] = useState<ChildrenType[]>([]);
   const [totalCharCount, setTotalCharCount] = useState<number>(0);
@@ -40,7 +40,7 @@ export default function RecursiveInput(props: RecursiveInputProps) {
     const word = [value];
     setText(word);
     setTotalCharCount(value.length);
-    Length?.(1);
+    onKeyPress?.(1);
   };
 
   return (
@@ -85,7 +85,9 @@ export default function RecursiveInput(props: RecursiveInputProps) {
             level={level + 1}
             parentId={child.id}
             onDelete={handleDeleteChild}
-            Length={(num: number) => setTotalCharCount(totalCharCount + num)}
+            onKeyPress={(num: number) =>
+              setTotalCharCount(totalCharCount + num)
+            }
           />
         ))}
       </div>
