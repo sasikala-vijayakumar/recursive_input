@@ -11,10 +11,11 @@ type RecursiveInputProps = {
   level: number;
   parentId: number | null;
   onDelete?: (id: number) => void;
+  Length?: (num: number) => void;
 };
 
 export default function RecursiveInput(props: RecursiveInputProps) {
-  const { level, parentId, onDelete } = props;
+  const { level, parentId, onDelete, Length } = props;
   const [text, setText] = useState<string[]>([]);
   const [children, setChildren] = useState<ChildrenType[]>([]);
   const [totalCharCount, setTotalCharCount] = useState<number>(0);
@@ -25,7 +26,6 @@ export default function RecursiveInput(props: RecursiveInputProps) {
   const handleAdd = () => {
     const id = level + 1;
     setChildren([...children, { id, charCount: 0 }]);
-    setTotalCharCount(text.join(",").length);
   };
 
   const handleDelete = () => {
@@ -38,7 +38,10 @@ export default function RecursiveInput(props: RecursiveInputProps) {
   };
 
   const handleInputChange = (index: number, value: string) => {
-    setText([value]);
+    const word = [value];
+    setText(word);
+    setTotalCharCount(value.length);
+    Length?.(1)
   };
 
   return (
@@ -48,8 +51,8 @@ export default function RecursiveInput(props: RecursiveInputProps) {
       }`}
       id={`parent-${parentId}`}
     >
-      <h3 className="title">Characters in children: {totalCharCount}</h3>
-      {!parentId ? (
+      <h3 className="title">Characters in children:{totalCharCount}</h3>
+      {parentId ? (
         <input
           type="text"
           onChange={(e) => handleInputChange(idCounter, e.target.value)}
@@ -69,12 +72,7 @@ export default function RecursiveInput(props: RecursiveInputProps) {
           Add Child
         </button>
         {parentId ? (
-          <button
-            className="delete"
-            id="input--button"
-            onClick={handleDelete}
-            disabled={!parentId}
-          >
+          <button className="delete" id="input--button" onClick={handleDelete}>
             Delete Child
           </button>
         ) : (
@@ -88,6 +86,7 @@ export default function RecursiveInput(props: RecursiveInputProps) {
             level={level + 1}
             parentId={child.id}
             onDelete={handleDeleteChild}
+            Length={(num: number) => setTotalCharCount(totalCharCount + num)}
           />
         ))}
       </div>

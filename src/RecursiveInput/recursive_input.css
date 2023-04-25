@@ -1,13 +1,13 @@
 .recursive-input {
-  border: 2px solid black;
+  width: fit-content;
   padding: 10px;
   margin: 20px;
+  border: 2px solid black;
   border-radius: 10px;
-  width: fit-content;
 }
 
 .recursive-input.grey {
-  background-color: #f0f0f0;
+  background-color: #d7d3d3;
 }
 
 .recursive-input.white {
@@ -16,7 +16,7 @@
 
 .recursive-input .title {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: 10px;
 }
 
