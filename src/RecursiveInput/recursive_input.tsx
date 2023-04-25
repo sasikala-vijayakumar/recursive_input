@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import "./recursive_input.css";
-import _ from "lodash";
 
 type ChildrenType = {
   id: number;
@@ -41,7 +40,7 @@ export default function RecursiveInput(props: RecursiveInputProps) {
     const word = [value];
     setText(word);
     setTotalCharCount(value.length);
-    Length?.(1)
+    Length?.(1);
   };
 
   return (
