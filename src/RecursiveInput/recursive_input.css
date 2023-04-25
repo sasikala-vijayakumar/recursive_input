@@ -1,27 +1,43 @@
-.child--input {
-  border: 1px solid #000;
+.recursive-input {
+  border: 2px solid black;
   padding: 10px;
-  margin-top: 10px;
+  margin: 20px;
+  border-radius: 10px;
   width: fit-content;
 }
-#grey {
-  background-color: darkgray;
+
+.recursive-input.grey {
+  background-color: #f0f0f0;
 }
-#white {
-  background-color: aliceblue;
+
+.recursive-input.white {
+  background-color: #fff;
 }
+
+.recursive-input .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recursive-input input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
 .add {
   background-color: greenyellow;
 }
+
 .delete {
   background-color: rgb(233, 21, 39);
 }
+
 #input--button {
   margin: 10px;
   padding: 10px;
   border-radius: 20px;
   font-weight: bold;
-}
-.input--button--div {
-  margin-top: 10px;
 }

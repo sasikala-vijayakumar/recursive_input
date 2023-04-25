@@ -1,10 +1,10 @@
 import "./App.css";
-import ParentInput from "./RecursiveInput/input";
+import RecursiveInput from "./RecursiveInput/recursive_input";
 
 function App() {
   return (
     <div className="App">
-      <ParentInput />
+      <RecursiveInput level={0} parentId={0} />
     </div>
   );
 }
