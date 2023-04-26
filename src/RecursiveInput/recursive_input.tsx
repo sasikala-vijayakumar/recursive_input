@@ -48,24 +48,15 @@ export default function RecursiveInput(props: RecursiveInputProps) {
       className={`recursive-input level-${level} ${
         level % 2 === 0 ? "grey" : "white"
       }`}
-      id={`parent-${parentId}`}
     >
       <h3 className="title">Characters in children:{totalCharCount}</h3>
-      {parentId ? (
-        <input
-          type="text"
-          onChange={(e) => handleInputChange(idCounter, e.target.value)}
-          value={text}
-          placeholder="Type something here..."
-        />
-      ) : (
-        <input
-          type="text"
-          onChange={(e) => handleInputChange(id, e.target.value)}
-          value={text}
-          placeholder="Type something here..."
-        />
-      )}
+
+      <input
+        type="text"
+        onChange={(e) => handleInputChange(id, e.target.value)}
+        value={text}
+        placeholder="Type something here..."
+      />
       <div className="buttons">
         <button className="add" id="input--button" onClick={handleAdd}>
           Add Child
